@@ -10,7 +10,11 @@ attr_accessor :health_points, :attack_power
     # Also also give code outside this class access to these variables (via attr_reader, attr_writer or attr_accessor)
   end
   def attack!(target)
+    if target.is_a?Barrack
+      target.damage(attack_power/2)
+    else
     target.damage(@attack_power)
+    end
   end
   def damage(attack_power)
     @health_points -= attack_power
